@@ -9,6 +9,12 @@ variable "alert_channel_email" {
   default     = []
 }
 
+variable "include_json_attachment" {
+  description = "attach json to email 1 for no, 0 for yes. NO by default"
+  type        = number
+  default     = 1
+}
+
 variable "alert_channel_webhook" {
   description = "Webhook notifications"
   type        = string
@@ -24,4 +30,16 @@ variable "incident_preference" {
   description = "The rollup strategy of the alert policy.  Valid values are PER_POLICY, PER_CONDITION, and PER_CONDITION_AND_TARGET"
   type        = string
   default     = "PER_CONDITION_AND_TARGET"
+}
+
+#victorops variables
+variable "vicrorops_key" {
+  description = "The key for integrating with VictorOps."
+  type        = string
+  default     = ""
+}
+variable "vicrorops_route_key" {
+  description = "The route key for integrating with VictorOps."
+  type        = string
+  default     = ""
 }
