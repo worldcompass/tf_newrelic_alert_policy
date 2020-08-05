@@ -6,6 +6,7 @@ resource "newrelic_alert_policy" "policy" {
     length(newrelic_alert_channel.webhook_alert_channel) > 0 ? newrelic_alert_channel.webhook_alert_channel[0].id : 0,
     length(newrelic_alert_channel.pagerduty_alert_channel) > 0 ? newrelic_alert_channel.pagerduty_alert_channel[0].id : 0,
     length(newrelic_alert_channel.victorops_alert_channel) > 0 ? newrelic_alert_channel.victorops_alert_channel[0].id : 0,
+    length(newrelic_alert_channel.slack_alert_channel) > 0 ? newrelic_alert_channel.slack_alert_channel[0].id : 0,
   ])
 }
 
@@ -53,4 +54,16 @@ resource "newrelic_alert_channel" "victorops_alert_channel" {
     route_key = var.vicrorops_route_key
   }
 
+}
+
+resource "newrelic_alert_channel" "slack_alert_channel" {
+  count = var.slack_url == "" ? 0 : 1
+
+  name = "slack"
+  type = "slack"
+
+  config {
+    url     = "https://${var.slack_url}.slack.com"
+    channel = var.slack_alert_channel
+  }
 }

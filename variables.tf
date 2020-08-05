@@ -43,3 +43,15 @@ variable "vicrorops_route_key" {
   type        = string
   default     = ""
 }
+
+#slack variables
+variable "slack_url" {
+  description = "Your organization's Slack URL. Only the URL part"
+  type        = string
+  default     = ""
+}
+variable "slack_alert_channel" {
+  description = "The Slack channel to send notifications to."
+  type        = string
+  default     = ""
+}
