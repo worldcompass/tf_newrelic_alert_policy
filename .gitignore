@@ -1,0 +1,13 @@
+.terraform
+.idea*
+
+module/
+examples/
+env/
+
+
+
+*.tfstate
+*.backup
+
+provider.tf
